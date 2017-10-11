@@ -61,14 +61,14 @@ public class Client extends AbstractTestBooking {
 	 */
 	@Override
 	protected void checkForAvailableCarTypes(Date start, Date end) throws Exception {
-		Set freeCarTypes = crc.IGetFreeCarTypes(start, end);
+		Set freeCarTypes = crc.getFreeCarTypes(start, end);
 		System.out.println("chech them cars");
 		for (Object x : freeCarTypes){
 			System.out.println(x);
 			
 		}
-//		// TODO Auto-generated method stub
-//		throw new UnsupportedOperationException("TODO 1");
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("TODO 1");
 	}
 
 	/**
@@ -95,7 +95,7 @@ public class Client extends AbstractTestBooking {
 		// TODO Auto-generated method stub
 		System.out.println("creatQuote");
 		ReservationConstraints constraints = new ReservationConstraints(start, end, carType, region);
-		return crc.ICreateQuote(constraints, clientName);
+		return crc.IcreateQuote(constraints, clientName);
 		
 		
 //		throw new UnsupportedOperationException("TODO 2");

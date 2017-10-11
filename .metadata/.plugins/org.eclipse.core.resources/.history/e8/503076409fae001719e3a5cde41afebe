@@ -186,12 +186,12 @@ public class CarRentalCompany implements ICarRentalCompany {
 	
 	//TODO JEAN
 	@Override
-	public Set<CarType> IGetFreeCarTypes(Date from, Date end) throws RemoteException {
+	public Set<CarType> getFreeCarTypes(Date from, Date end) throws RemoteException {
 		return getAvailableCarTypes(from, end);
 	}
 
 	@Override
-	public Quote ICreateQuote(ReservationConstraints constraints, String client) throws RemoteException {
+	public Quote IcreateQuote(ReservationConstraints constraints, String client) throws RemoteException {
 		try {
 			return createQuote(constraints, client);
 		} catch (ReservationException e) {
@@ -199,22 +199,6 @@ public class CarRentalCompany implements ICarRentalCompany {
 			e.printStackTrace();
 		}
 		return null;
-	}
-
-	@Override
-	public Reservation IConfirmQuote(Quote quote) throws RemoteException {
-		try {
-			return confirmQuote(quote);
-		} catch (ReservationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
-	}
-
-	@Override
-	public int IGetNumberOfReservationsForCarType(String carType) throws RemoteException {
-		return getAvailableCars(carType, new Date(Long.MIN_VALUE), new Date(Long.MAX_VALUE) ).size();
 	}
 	
 }

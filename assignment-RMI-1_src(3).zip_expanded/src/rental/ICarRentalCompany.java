@@ -8,8 +8,11 @@ import java.util.Set;
 
 public interface ICarRentalCompany extends Remote {
 	
-	public Set<CarType> getFreeCarTypes(Date from, Date end) throws RemoteException;
+	public Set<CarType> IGetFreeCarTypes(Date from, Date end) throws RemoteException;
+	public Quote ICreateQuote(ReservationConstraints constraints, String client) throws RemoteException;
+	public Reservation IConfirmQuote(Quote quote) throws RemoteException;
+	public int IGetNumberOfReservationsForCarType(String carType) throws RemoteException;
 	
-	public Quote IcreateQuote(ReservationConstraints constraints, String client) throws RemoteException;
+	
 }
 	
