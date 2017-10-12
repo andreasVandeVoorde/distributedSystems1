@@ -57,7 +57,12 @@ public class Car {
     }
     
     public void removeReservation(Reservation reservation) {
-        // equals-method for Reservation is required!
         reservations.remove(reservation);
     }
+    
+    public List<Reservation> getReservations(){
+    		return this.reservations;
+    }
+    
+    
 }

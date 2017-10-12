@@ -44,7 +44,6 @@ public class Client extends AbstractTestBooking {
 		super(scriptFile);
 		this.crc = crc;
 		System.out.println("succes client");
-		// TODO Auto-generated method stub
 //		throw new UnsupportedOperationException("TODO 0");
 	}
 	
@@ -62,12 +61,11 @@ public class Client extends AbstractTestBooking {
 	@Override
 	protected void checkForAvailableCarTypes(Date start, Date end) throws Exception {
 		Set freeCarTypes = crc.IGetFreeCarTypes(start, end);
-		System.out.println("chech them cars");
+		System.out.println("checking for available cars");
 		for (Object x : freeCarTypes){
 			System.out.println(x);
 			
 		}
-//		// TODO Auto-generated method stub
 //		throw new UnsupportedOperationException("TODO 1");
 	}
 
@@ -92,7 +90,6 @@ public class Client extends AbstractTestBooking {
 	@Override
 	protected Quote createQuote(String clientName, Date start, Date end,
 			String carType, String region) throws Exception {
-		// TODO Auto-generated method stub
 		System.out.println("creatQuote");
 		ReservationConstraints constraints = new ReservationConstraints(start, end, carType, region);
 		return crc.ICreateQuote(constraints, clientName);
@@ -113,8 +110,9 @@ public class Client extends AbstractTestBooking {
 	 */
 	@Override
 	protected Reservation confirmQuote(Quote quote) throws Exception {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("TODO 3");
+		System.out.println("confirming Quote");
+		return crc.IConfirmQuote(quote);
+		//throw new UnsupportedOperationException("TODO 3");
 	}
 	
 	/**
@@ -129,8 +127,9 @@ public class Client extends AbstractTestBooking {
 	 */
 	@Override
 	protected List<Reservation> getReservationsByRenter(String clientName) throws Exception {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("TODO 4");
+		System.out.println("Searching for reservations");
+		return crc.IGetReservationsByRenter(clientName);
+		//throw new UnsupportedOperationException("TODO 4");
 	}
 
 	/**
@@ -145,7 +144,8 @@ public class Client extends AbstractTestBooking {
 	 */
 	@Override
 	protected int getNumberOfReservationsForCarType(String carType) throws Exception {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("TODO 5");
+		System.out.println("Calculating number of reservations");
+		return crc.IGetNumberOfReservationsForCarType(carType);
+		//throw new UnsupportedOperationException("TODO 5");
 	}
 }

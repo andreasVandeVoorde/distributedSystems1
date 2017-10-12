@@ -16,7 +16,6 @@ public class RentalServer {
 	
 	public static void main(String[] args) throws ReservationException,
 			NumberFormatException, IOException {
-		//TODO JEAN 
 		System.setProperty("java.rmi.server.hostname","localhost");
 //		System.setProperty("java.rmi.activation.port","8080");
 		

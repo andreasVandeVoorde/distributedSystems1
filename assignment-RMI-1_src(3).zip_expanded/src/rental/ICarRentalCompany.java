@@ -12,6 +12,7 @@ public interface ICarRentalCompany extends Remote {
 	public Quote ICreateQuote(ReservationConstraints constraints, String client) throws RemoteException;
 	public Reservation IConfirmQuote(Quote quote) throws RemoteException;
 	public int IGetNumberOfReservationsForCarType(String carType) throws RemoteException;
+	public List<Reservation> IGetReservationsByRenter(String clientName) throws RemoteException;
 	
 	
 }

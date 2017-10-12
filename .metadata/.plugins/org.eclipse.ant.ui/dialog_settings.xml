@@ -3,6 +3,6 @@
 	<item value="false" key="AntPropertiesFileSelectionDialog.showAll"/>
 	<item value="/assignment-RMI-1_src(3).zip_expanded" key="AntPropertiesFileSelectionDialog.lastContainer"/>
 	<section name="org.eclipse.ant.internal.ui.views.AntView">
-		<item value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0D;&#x0A;&lt;antView&gt;&#x0D;&#x0A;&lt;project default=&quot;run&quot; error=&quot;false&quot; name=&quot;RMI1&quot; path=&quot;/assignment-RMI-1_src(3).zip_expanded/build.xml&quot;/&gt;&#x0D;&#x0A;&lt;filterInternalTargets value=&quot;false&quot;/&gt;&#x0D;&#x0A;&lt;/antView&gt;" key="memento"/>
+		<item value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0A;&lt;antView/&gt;" key="memento"/>
 	</section>
 </section>

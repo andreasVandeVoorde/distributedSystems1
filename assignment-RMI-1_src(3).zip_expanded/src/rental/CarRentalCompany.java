@@ -2,6 +2,7 @@ package rental;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
@@ -104,6 +105,10 @@ public class CarRentalCompany implements ICarRentalCompany {
 	 * CARS *
 	 *********/
 	
+	private List<Car> getAllCars(){
+		return this.cars;
+	}
+	
 	private Car getCar(int uid) {
 		for (Car car : cars) {
 			if (car.getId() == uid)
@@ -143,7 +148,6 @@ public class CarRentalCompany implements ICarRentalCompany {
 		return new Quote(client, constraints.getStartDate(), constraints.getEndDate(), getName(), constraints.getCarType(), price);
 	}
 
-	// Implementation can be subject to different pricing strategies
 	private double calculateRentalPrice(double rentalPricePerDay, Date start, Date end) {
 		return rentalPricePerDay * Math.ceil((end.getTime() - start.getTime())
 						/ (1000 * 60 * 60 * 24D));
@@ -167,6 +171,19 @@ public class CarRentalCompany implements ICarRentalCompany {
 		getCar(res.getCarId()).removeReservation(res);
 	}
 	
+	public List<Reservation> getReservationsByRenter(String renter) throws ReservationException{
+		List<Reservation> reservationsOfAllCars = new ArrayList<Reservation>();
+		for(Car car: this.getAllCars()) {
+			for(Reservation reservation: car.getReservations()) {
+				if(reservation.getCarRenter() == renter) {
+					reservationsOfAllCars.add(reservation);
+				}
+			}
+		}
+		return reservationsOfAllCars;
+	}
+	
+	
 	@Override
 	public String toString() {
 		return String.format("<%s> CRC is active in regions %s and serving with %d car types", name, listToString(regions), carTypes.size());
@@ -184,7 +201,6 @@ public class CarRentalCompany implements ICarRentalCompany {
 		return out.toString();
 	}
 	
-	//TODO JEAN
 	@Override
 	public Set<CarType> IGetFreeCarTypes(Date from, Date end) throws RemoteException {
 		return getAvailableCarTypes(from, end);
@@ -195,7 +211,6 @@ public class CarRentalCompany implements ICarRentalCompany {
 		try {
 			return createQuote(constraints, client);
 		} catch (ReservationException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
@@ -206,7 +221,6 @@ public class CarRentalCompany implements ICarRentalCompany {
 		try {
 			return confirmQuote(quote);
 		} catch (ReservationException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
@@ -215,6 +229,16 @@ public class CarRentalCompany implements ICarRentalCompany {
 	@Override
 	public int IGetNumberOfReservationsForCarType(String carType) throws RemoteException {
 		return getAvailableCars(carType, new Date(Long.MIN_VALUE), new Date(Long.MAX_VALUE) ).size();
+	}
+	
+	
+	public List<Reservation> IGetReservationsByRenter(String renter) throws RemoteException {
+		try {
+			return getReservationsByRenter(renter);
+		} catch (ReservationException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
 }
